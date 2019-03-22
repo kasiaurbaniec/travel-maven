@@ -33,6 +33,8 @@ public class TravelOffice {
 //        }
     }
 
+
+
     public int getCustomerCount() {
         return setOfCustomers.size();
     }
@@ -84,6 +86,12 @@ public class TravelOffice {
             return true;
         }
         return false;
+    }
+    public boolean customerInSetChecker(String name){
+        for (Customer cust:getSetOfCustomers()
+        ) {if(cust.getName().equalsIgnoreCase(name))
+            return true;
+        }return false;
     }
 }
 

@@ -4,7 +4,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class TOService {
-TravelOffice to=new TravelOffice();
+    public TOService(TravelOffice to) {
+        this.to = to;
+    }
+
+    TravelOffice to=new TravelOffice();
     public void showTrips() {
         to.showTrips();
     }
@@ -28,5 +32,8 @@ TravelOffice to=new TravelOffice();
     }
     public void addCustomer(Customer customer) {
         to.addCustomer(customer);
+    }
+    public boolean customerInSetChecker(String name){
+        return to.customerInSetChecker(name);
     }
 }

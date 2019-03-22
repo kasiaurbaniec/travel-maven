@@ -6,10 +6,10 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class MainHandler implements UserCustomer {
-//    TravelOffice to = new TravelOffice();
+    //    TravelOffice to = new TravelOffice();
     Scanner scanner = new Scanner(System.in);
     private static Logger logger = Logger.getLogger("TravelOffice");
-TOService toService=new TOService();
+    TOService toService = new TOService(new TravelOffice());
 
     public void setToService(TOService toService) {
         this.toService = toService;
@@ -71,9 +71,13 @@ TOService toService=new TOService();
 
     @Override
     public Customer addCustomer() {
+        String name;
+        boolean checker = false;
         logger.info("start to add new customer");
-        System.out.println("Give customers name");
-        String name = scanner.next();
+
+        name = scanner.next();
+        checker = toService.customerInSetChecker(name);
+
         System.out.println("Give customers Address \n Street:");
         String street = scanner.next();
         System.out.println("Give customers street number");
@@ -92,6 +96,7 @@ TOService toService=new TOService();
 
         return customer;
     }
+
 
     @Override
     public Trip addTrip() {
